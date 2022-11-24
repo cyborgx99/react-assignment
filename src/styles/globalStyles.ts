@@ -5,11 +5,15 @@ const styled = { createGlobalStyle };
 // https://github.com/prettier/prettier/issues/11196#issuecomment-951878725
 // As a workaround to apply formatting in createGlobalStyle
 export const GlobalStyle = styled.createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+  /* @import url('https://fonts.googleapis.com/icon?family=Material+Icons'); */
+
   /* Box sizing rules */
   *,
   *::before,
   *::after {
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
   }
 
   /* Remove default margin */

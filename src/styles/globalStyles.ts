@@ -43,7 +43,6 @@ export const GlobalStyle = styled.createGlobalStyle`
 
   /* Set core body defaults */
   body {
-    min-height: 100vh;
     text-rendering: optimizeSpeed;
     line-height: 1.5;
   }

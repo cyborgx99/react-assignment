@@ -8,11 +8,24 @@ export interface MyTheme {
     h5: 1.25;
     h6: 1.125;
     default: 1;
-    small: 0.75;
+    textSmall: 0.75;
+    double: 2;
+  };
+  device: {
+    tablet: string;
+    desktop: string;
+  };
+  spacings: {
+    half: 0.5;
+    one: 1;
+    oneAndHalf: 1.5;
+    two: 2;
+    twoAndHalf: 2.5;
+    three: 3;
   };
   lineHeights: {
-    heading: number;
-    paragraph: number;
+    heading: 1.2;
+    paragraph: 1.5;
   };
   colors: {
     primary: {
@@ -44,6 +57,7 @@ export interface MyTheme {
       '500': string;
     };
     text: {
+      white: string;
       '100': string;
     };
     background: {

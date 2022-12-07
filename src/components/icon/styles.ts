@@ -7,8 +7,11 @@ export const StyledIcon = styled.span<StyledIconProps>`
   font-weight: normal;
   font-style: normal;
   font-size: ${({ $fontSize }) => `${$fontSize}rem`};
+  width: ${({ $fontSize }) => `${$fontSize}rem`};
+  height: ${({ $fontSize }) => `${$fontSize}rem`};
   display: inline-block;
   line-height: 1;
+  transition: color 0.5s ease-in-out;
   text-transform: none;
   letter-spacing: normal;
   word-wrap: normal;
@@ -23,4 +26,6 @@ export const StyledIcon = styled.span<StyledIconProps>`
   -moz-osx-font-smoothing: grayscale;
   /* Support for IE. */
   font-feature-settings: 'liga';
+
+  ${({ $additionalStyles }) => $additionalStyles};
 `;

@@ -9,7 +9,20 @@ export const myTheme: MyTheme = {
     h5: 1.25,
     h6: 1.125,
     default: 1,
-    small: 0.75,
+    textSmall: 0.75,
+    double: 2,
+  },
+  device: {
+    tablet: `(min-width: 600px)`,
+    desktop: `(min-width: 1200px)`,
+  },
+  spacings: {
+    half: 0.5,
+    one: 1,
+    oneAndHalf: 1.5,
+    two: 2,
+    twoAndHalf: 2.5,
+    three: 3,
   },
   lineHeights: {
     heading: 1.2,
@@ -17,18 +30,18 @@ export const myTheme: MyTheme = {
   },
   colors: {
     primary: {
-      '100': '#A0E5FF',
-      '200': '#89CEFE',
-      '300': '#72B8E7',
-      '400': '#5BA3D0',
-      '500': '#428DBA',
+      '100': '#5658D3',
+      '200': '#464CC5',
+      '300': '#3440B6',
+      '400': '#1E35A8',
+      '500': '#002A9A',
     },
     secondary: {
-      '100': '#FFC675',
-      '200': '#FFB060',
-      '300': '#F89A4C',
-      '400': '#DF8537',
-      '500': '#C67122',
+      '100': '#CE4613',
+      '200': '#BE3703',
+      '300': '#AE2800',
+      '400': '#9E1600',
+      '500': '#8E0000',
     },
     success: {
       '100': '#9DF27A',
@@ -46,6 +59,7 @@ export const myTheme: MyTheme = {
     },
     text: {
       '100': '#170312',
+      white: '#FFFFFF',
     },
     background: {
       '100': '#E1DCDA',

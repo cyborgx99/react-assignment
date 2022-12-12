@@ -1,7 +1,7 @@
 import get from 'lodash.get';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { ColorStringPathType, FontSizeValues } from '../types/common.types';
+import { ColorStringPathType, FontSizeValues } from '../types/commonStyle.types';
 
 export const BaseLink = styled(NavLink)`
   display: flex;
@@ -48,6 +48,15 @@ export const BaseHeaderSix = styled.h6<{ $color?: ColorStringPathType }>`
 `;
 
 export const BaseSpan = styled.span<{ $fontSize?: FontSizeValues; $color?: ColorStringPathType }>`
+  font-size: ${({ $fontSize }) => `${$fontSize ?? 1}rem`};
+  line-height: ${({ theme }) => theme.lineHeights.paragraph};
+  color: ${({ theme, $color }) => get(theme.colors, $color ?? 'text.100')};
+`;
+
+export const BaseParagraph = styled.span<{
+  $fontSize?: FontSizeValues;
+  $color?: ColorStringPathType;
+}>`
   font-size: ${({ $fontSize }) => `${$fontSize ?? 1}rem`};
   line-height: ${({ theme }) => theme.lineHeights.paragraph};
   color: ${({ theme, $color }) => get(theme.colors, $color ?? 'text.100')};

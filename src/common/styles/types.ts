@@ -11,6 +11,9 @@ export interface MyTheme {
     textSmall: 0.75;
     double: 2;
   };
+  borderRadius: {
+    default: string;
+  };
   device: {
     tablet: string;
     desktop: string;

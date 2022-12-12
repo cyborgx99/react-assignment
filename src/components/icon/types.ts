@@ -1,4 +1,4 @@
-import { CssStyleProps, ColorStringPathType, FontSizeValues } from 'common/types/common.types';
+import { CssStyleProps, ColorStringPathType, FontSizeValues } from 'common/types/commonStyle.types';
 
 export interface IconProps {
   name: string;

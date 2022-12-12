@@ -12,6 +12,9 @@ export const myTheme: MyTheme = {
     textSmall: 0.75,
     double: 2,
   },
+  borderRadius: {
+    default: '10px',
+  },
   device: {
     tablet: `(min-width: 600px)`,
     desktop: `(min-width: 1200px)`,

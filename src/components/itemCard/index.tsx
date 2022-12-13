@@ -25,9 +25,9 @@ const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
 
   return (
     <ItemCardContainer>
-      {cardItem.photo && <CardImage src={cardItem.photo} />}
+      {cardItem.photo && <CardImage data-testid='card-image' src={cardItem.photo} />}
       <CardContent>
-        <BaseHeaderThree>{cardItem.name}</BaseHeaderThree>
+        <BaseHeaderThree data-testid='card-title'>{cardItem.name}</BaseHeaderThree>
         <BaseParagraph>Price: ${cardItem.price}</BaseParagraph>
         <AmountContainer>
           <BaseParagraph>Amount: </BaseParagraph>
@@ -37,8 +37,9 @@ const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
             text='+'
             onClick={increment}
           />
-          <BaseParagraph>{amount}</BaseParagraph>
+          <BaseParagraph data-testid='amount'>{amount}</BaseParagraph>
           <Button
+            data-testid='decrement'
             backgroundColor='secondary.100'
             additionalStyles={amountButtonStyles}
             text='-'

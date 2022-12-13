@@ -15,8 +15,7 @@ const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
 
   const decrement = () => {
     setAmount((previous) => {
-      if (previous === 1) return previous;
-      return previous - 1;
+      return previous === 1 ? previous : previous - 1;
     });
   };
 

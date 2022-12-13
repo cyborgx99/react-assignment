@@ -1,4 +1,4 @@
-import { CssStyleProps } from 'common/types/common.types';
+import { CssStyleProps } from 'common/types/commonStyle.types';
 
 export type LoaderSizeType = 'small' | 'medium' | 'large';
 export type LoaderTypes = 'regular' | 'animated';

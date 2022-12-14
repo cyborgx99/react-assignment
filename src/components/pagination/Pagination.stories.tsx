@@ -16,7 +16,7 @@ Primary.args = {
   currentPage: 1,
   totalCount: 100,
   itemsPerPage: 10,
-  onPageChange: (d: number) => {
-    console.log(d);
+  onPageChange: (page: number) => {
+    console.log(page);
   },
 };

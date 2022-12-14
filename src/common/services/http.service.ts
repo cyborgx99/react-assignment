@@ -30,6 +30,15 @@ class HttpService implements HttpServiceInterface {
       });
   };
 
+  public getWithResponseHeaders = async <R>(url: string, config?: AxiosRequestConfig) => {
+    return this.apiClient
+      .get<R>(url, config)
+      .then((result) => ({ data: result.data, headers: result.headers }))
+      .catch((error) => {
+        throw getErrorMessage(error);
+      });
+  };
+
   public delete = async <R>(url: string, config?: AxiosRequestConfig) => {
     return this.apiClient
       .delete<R>(url, config)

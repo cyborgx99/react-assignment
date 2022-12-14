@@ -34,29 +34,19 @@ export const PaginationButton = styled.button<{
     }
   }
 
-  ${({ $isArrow }) =>
-    $isArrow
-      ? css`
-          :hover {
-            background-color: ${({ theme }) => theme.colors.primary[100]};
+  ${({ disabled }) =>
+    !disabled &&
+    css`
+      :hover {
+        background-color: ${({ theme }) => theme.colors.primary[100]};
+        color: ${({ theme }) => theme.colors.text.white};
 
-            > span {
-              border-radius: 10px;
-              color: ${({ theme }) => theme.colors.text.white};
-            }
-          }
-        `
-      : css`
-          :hover {
-            background-color: ${({ theme }) => theme.colors.primary[100]};
-            color: ${({ theme }) => theme.colors.text.white};
-
-            > span {
-              border-radius: 10px;
-              color: ${({ theme }) => theme.colors.text.white};
-            }
-          }
-        `}
+        > span {
+          border-radius: 10px;
+          color: ${({ theme }) => theme.colors.text.white};
+        }
+      }
+    `}
 
   ${({ $isSelected }) =>
     $isSelected &&
@@ -65,7 +55,7 @@ export const PaginationButton = styled.button<{
       color: ${({ theme }) => theme.colors.text.white};
     `}
 
-    ${({ disabled }) =>
+  ${({ disabled }) =>
     disabled &&
     css`
       background-color: ${({ theme }) => theme.colors.background[100]};

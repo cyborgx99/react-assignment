@@ -4,12 +4,28 @@ export const CardImage = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: ${({ theme }) => theme.borderRadius.default};
+  height: 20rem;
 `;
 
 export const ItemCardContainer = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primary[100]};
   border-radius: ${({ theme }) => theme.borderRadius.default};
-  max-width: 24rem;
+  width: 100%;
+  flex-grow: 1;
+  flex-basis: 50%;
+
+  :last-child {
+    margin-right: auto;
+  }
+
+  @media ${({ theme }) => theme.device.tablet} {
+    flex-grow: 0;
+    flex-basis: 49%;
+  }
+
+  @media ${({ theme }) => theme.device.desktop} {
+    flex-basis: 32.5%;
+  }
 `;
 
 export const CardContent = styled.div`

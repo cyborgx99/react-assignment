@@ -13,6 +13,12 @@ export const StyledButton = styled.button<StyledButtonPropsInterface>`
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.default};
   cursor: pointer;
+  transition: scale 0.25s ease-in-out, font-weight 0.25s ease-in-out;
+
+  :hover {
+    scale: 1.025;
+    font-weight: bold;
+  }
 
   ${({ $additionalStyles }) => $additionalStyles};
 `;

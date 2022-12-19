@@ -14,4 +14,5 @@ export const GoodsItemsContainer = styled.div`
   flex-wrap: wrap;
   margin-bottom: 1rem;
   width: 100%;
+  justify-content: space-between;
 `;

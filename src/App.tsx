@@ -4,13 +4,16 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './common/styles/globalStyles';
 import { myTheme } from './common/styles/theme';
 import AppRoutes from './routes/routes';
+import CartContextProvider from 'common/context/cartContextProvider';
 
 const App = () => {
   return (
     <ThemeProvider theme={myTheme}>
       <GlobalStyle />
       <QueryProvider>
-        <AppRoutes />
+        <CartContextProvider>
+          <AppRoutes />
+        </CartContextProvider>
       </QueryProvider>
     </ThemeProvider>
   );

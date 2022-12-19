@@ -1,6 +1,6 @@
 import React from 'react';
 import { BaseHeaderSix } from 'common/styles/baseComponents';
-import BottomNav from '../bottomNav';
+import NavigationBar from '../navigation';
 import { StyledFooter } from './styles';
 
 const PageFooter = () => {
@@ -9,7 +9,7 @@ const PageFooter = () => {
       <StyledFooter>
         <BaseHeaderSix $color='text.white'>© All rights reserved (Apparently)</BaseHeaderSix>
       </StyledFooter>
-      <BottomNav />
+      <NavigationBar navType='bottom' />
     </>
   );
 };

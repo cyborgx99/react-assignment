@@ -42,7 +42,7 @@ export const PaginationButton = styled.button<{
         color: ${({ theme }) => theme.colors.text.white};
 
         > span {
-          border-radius: 10px;
+          border-radius: ${({ theme }) => theme.borderRadius.default};
           color: ${({ theme }) => theme.colors.text.white};
         }
       }

@@ -1,14 +1,37 @@
 import styled, { css } from 'styled-components';
-import { BaseLink } from 'common/styles/baseComponents';
+import { BaseLink, BaseSpan } from 'common/styles/baseComponents';
 
-export const StyledBottomNav = styled.nav`
+export const IconWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+`;
+
+export const LinkText = styled(BaseSpan)`
+  display: none;
+  transition: color 0.5s ease-in-out;
+  @media ${({ theme }) => theme.device.tablet} {
+    display: block;
+  }
+`;
+
+export const StyledBottomNav = styled.nav<{ $navType: 'bottom' | 'side' }>`
   min-height: 3rem;
   background-color: ${({ theme }) => theme.colors.text[100]};
   display: flex;
   justify-content: space-evenly;
 
+  ${({ $navType }) =>
+    $navType === 'bottom' &&
+    css`
+      @media ${({ theme }) => theme.device.tablet} {
+        display: none;
+      }
+    `}
+
   @media ${({ theme }) => theme.device.tablet} {
-    display: none;
+    height: 100%;
+    flex-direction: column;
   }
 `;
 

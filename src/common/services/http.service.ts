@@ -15,7 +15,7 @@ class HttpService implements HttpServiceInterface {
 
   private apiClient: AxiosInstance = axios.create({
     withCredentials: true,
-    baseURL: import.meta.env.VITE_SERVER_URL,
+    baseURL: process.env.VITE_SERVER_URL,
     headers: {
       'Content-type': 'application/json',
     },

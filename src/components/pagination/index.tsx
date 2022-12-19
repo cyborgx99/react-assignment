@@ -35,7 +35,12 @@ const Pagination = ({
   return (
     <PaginationWrapper>
       <PaginationItem>
-        <PaginationButton disabled={currentPage === 1} $isArrow onClick={onPreviousClick}>
+        <PaginationButton
+          data-testid='previous'
+          disabled={currentPage === 1}
+          $isArrow
+          onClick={onPreviousClick}
+        >
           <Icon title='previous' name='navigate_before' />
         </PaginationButton>
       </PaginationItem>
@@ -55,7 +60,12 @@ const Pagination = ({
         );
       })}
       <PaginationItem>
-        <PaginationButton disabled={currentPage === lastPage} $isArrow onClick={onNextClick}>
+        <PaginationButton
+          data-testid='next'
+          disabled={currentPage === lastPage}
+          $isArrow
+          onClick={onNextClick}
+        >
           <Icon title='next' name='chevron_right' />
         </PaginationButton>
       </PaginationItem>

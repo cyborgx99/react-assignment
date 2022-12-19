@@ -12,10 +12,15 @@ const getAllItems = async (page: number) => {
   const response = await httpService.getWithResponseHeaders<CardItemInterface[]>(
     `${apiUrls.getItems}?_page=${page}&_limit=${10}`,
   );
-  return {
-    items: response.data,
-    totalCount: Number(response.headers[API_RESPONSE_HEADER_TOTAL_COUNT] ?? '0'),
-  };
+
+  return response.headers[API_RESPONSE_HEADER_TOTAL_COUNT]
+    ? {
+        items: response.data,
+        totalCount: Number(response.headers[API_RESPONSE_HEADER_TOTAL_COUNT] ?? '0'),
+      }
+    : {
+        items: response.data,
+      };
 };
 
 export const useGetItems = (page: number) => {

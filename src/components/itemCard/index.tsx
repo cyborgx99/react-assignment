@@ -1,6 +1,6 @@
 import { BaseHeaderThree, BaseParagraph } from 'common/styles/baseComponents';
 import Button from 'components/button';
-import React, { useState } from 'react';
+import React from 'react';
 import {
   amountButtonStyles,
   AmountContainer,
@@ -10,19 +10,14 @@ import {
 } from './styles';
 import { ItemCardPropsInterface } from './types';
 
-const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
-  const [amount, setAmount] = useState(1);
-
-  const decrement = () => {
-    setAmount((previous) => {
-      return previous === 1 ? previous : previous - 1;
-    });
-  };
-
-  const increment = () => {
-    setAmount((previous) => previous + 1);
-  };
-
+const ItemCard = ({
+  cardItem,
+  onCardActionClick,
+  amount,
+  incrementAmount,
+  decrementAmount,
+  buttonText,
+}: ItemCardPropsInterface) => {
   return (
     <ItemCardContainer>
       {cardItem.photo && <CardImage data-testid='card-image' src={cardItem.photo} />}
@@ -35,7 +30,7 @@ const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
             backgroundColor='secondary.100'
             additionalStyles={amountButtonStyles}
             text='+'
-            onClick={increment}
+            onClick={incrementAmount}
           />
           <BaseParagraph data-testid='amount'>{amount}</BaseParagraph>
           <Button
@@ -43,10 +38,10 @@ const ItemCard = ({ cardItem, onCardActionClick }: ItemCardPropsInterface) => {
             backgroundColor='secondary.100'
             additionalStyles={amountButtonStyles}
             text='-'
-            onClick={decrement}
+            onClick={decrementAmount}
           />
         </AmountContainer>
-        <Button text='Add to cart' onClick={onCardActionClick} />
+        <Button text={buttonText} onClick={onCardActionClick} />
       </CardContent>
     </ItemCardContainer>
   );

@@ -1,10 +1,10 @@
-export interface CardItemInterface {
+export interface CartItemInterface {
   id: string;
   photo: string;
   name: string;
   price: number;
 }
 
-export interface CardItemInterfaceWithAmount extends CardItemInterface {
+export interface CartItemInterfaceWithAmount extends CartItemInterface {
   amount: number;
 }

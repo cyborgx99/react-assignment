@@ -5,13 +5,16 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from 'common/styles/globalStyles';
 import { BrowserRouter } from 'react-router-dom';
 import ReactQueryProvider from 'queryProvider';
+import CartContextProvider from 'common/context/cartContextProvider';
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return (
     <ThemeProvider theme={myTheme}>
       <GlobalStyle />
       <BrowserRouter>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ReactQueryProvider>
+          <CartContextProvider>{children}</CartContextProvider>
+        </ReactQueryProvider>
       </BrowserRouter>
     </ThemeProvider>
   );

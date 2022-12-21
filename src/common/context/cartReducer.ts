@@ -23,9 +23,11 @@ export const cartReducer = (state: CartInitialState, action: CartActions) =>
 
       case CardActionTypes.CHANGE_ITEM_QUANTITY: {
         const index = draft.items.findIndex((item) => item.id === action.payload.id);
+        if (index === -1) break;
 
-        if (index !== -1) draft.items[index].amount += action.payload.value;
+        if (draft.items[index].amount + action.payload.value < 1) break;
 
+        draft.items[index].amount += action.payload.value;
         break;
       }
 

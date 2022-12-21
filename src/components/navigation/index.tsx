@@ -1,16 +1,17 @@
 import React from 'react';
 import { basePathKeys } from 'routes/pathKeys';
-import { BaseLink, BaseSpan } from 'common/styles/baseComponents';
+import { BaseLink } from 'common/styles/baseComponents';
 import Icon from '../icon';
 import {
   bottomNavIconAdditionalStyles,
-  CartCount,
+  CartCountContainer,
   CartLink,
   IconWrapper,
   LinkText,
   StyledBottomNav,
 } from './styles';
 import { NavigationBarPropsInterface } from './types';
+import CartCounter from './cartCounter';
 
 const NavigationBar = ({ navType }: NavigationBarPropsInterface) => {
   return (
@@ -40,10 +41,9 @@ const NavigationBar = ({ navType }: NavigationBarPropsInterface) => {
               name='shopping_cart'
             />
             <LinkText $color={isActive ? 'primary.100' : 'text.white'}>Cart</LinkText>
-            <CartCount>
-              {/* TODO: Get actual cart data */}
-              <BaseSpan $color='text.white'>1</BaseSpan>
-            </CartCount>
+            <CartCountContainer>
+              <CartCounter />
+            </CartCountContainer>
           </IconWrapper>
         )}
       </CartLink>

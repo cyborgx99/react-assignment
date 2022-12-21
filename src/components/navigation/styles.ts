@@ -45,16 +45,17 @@ export const CartLink = styled(BaseLink)`
   position: relative;
 `;
 
-export const CartCount = styled.div`
+export const CartCountContainer = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   background-color: ${({ theme }) => theme.colors.secondary[100]};
   color: ${({ theme }) => theme.colors.text.white};
   border-radius: 50%;
   position: absolute;
-  top: 0.15rem;
+  top: -0.5rem;
   left: 1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0.75rem;
 `;

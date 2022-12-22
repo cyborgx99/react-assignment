@@ -1,7 +1,7 @@
-import { CardItemInterfaceWithAmount } from 'common/types';
+import { CartItemInterfaceWithAmount } from 'common/types';
 
 export interface CartInitialState {
-  items: CardItemInterfaceWithAmount[];
+  items: CartItemInterfaceWithAmount[];
 }
 
 export enum CardActionTypes {
@@ -13,7 +13,7 @@ export enum CardActionTypes {
 export type AddToCart = {
   type: CardActionTypes.ADD_TO_CART;
   payload: {
-    item: CardItemInterfaceWithAmount;
+    item: CartItemInterfaceWithAmount;
   };
 };
 

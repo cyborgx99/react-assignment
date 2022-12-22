@@ -1,6 +1,6 @@
-import ItemCard from 'components/itemCard';
 import userEvent from '@testing-library/user-event';
 import { cleanup, render } from 'utils/test-utils';
+import GoodsItemCard from './goodsItemCard';
 
 const cardItem = {
   id: '1',
@@ -13,42 +13,21 @@ const cardItem = {
 afterEach(cleanup);
 
 test('renders an item card with a title', async () => {
-  const itemCard = render(
-    <ItemCard
-      cardItem={cardItem}
-      onCardActionClick={() => {
-        console.log(1);
-      }}
-    />,
-  );
+  const itemCard = render(<GoodsItemCard cardItem={cardItem} />);
 
   const title = await itemCard.findByTestId('card-title');
   expect(title.textContent).toContain('Salad');
 });
 
 test('displays an image', async () => {
-  const itemCard = render(
-    <ItemCard
-      cardItem={cardItem}
-      onCardActionClick={() => {
-        console.log(1);
-      }}
-    />,
-  );
+  const itemCard = render(<GoodsItemCard cardItem={cardItem} />);
 
   const image = (await itemCard.findByTestId('card-image')) as HTMLImageElement;
   expect(image.src).toContain(cardItem.photo);
 });
 
 test('clicking a plus button increments the item amount', async () => {
-  const itemCard = render(
-    <ItemCard
-      cardItem={cardItem}
-      onCardActionClick={() => {
-        console.log(1);
-      }}
-    />,
-  );
+  const itemCard = render(<GoodsItemCard cardItem={cardItem} />);
 
   const incrementButton = await itemCard.getByRole('button', { name: '+' });
 
@@ -61,14 +40,7 @@ test('clicking a plus button increments the item amount', async () => {
 });
 
 test('clicking a minus button decrements the item amount', async () => {
-  const itemCard = render(
-    <ItemCard
-      cardItem={cardItem}
-      onCardActionClick={() => {
-        console.log(1);
-      }}
-    />,
-  );
+  const itemCard = render(<GoodsItemCard cardItem={cardItem} />);
   const incrementButton = await itemCard.getByRole('button', { name: '+' });
   const decrementButton = await itemCard.getByRole('button', { name: '-' });
 
@@ -86,14 +58,7 @@ test('clicking a minus button decrements the item amount', async () => {
 });
 
 test('clicking a minus cannot decrement lower than 1', async () => {
-  const itemCard = render(
-    <ItemCard
-      cardItem={cardItem}
-      onCardActionClick={() => {
-        console.log(1);
-      }}
-    />,
-  );
+  const itemCard = render(<GoodsItemCard cardItem={cardItem} />);
 
   const incrementButton = await itemCard.getByRole('button', { name: '-' });
 

@@ -1,6 +1,10 @@
-import { CardItemInterface } from 'common/types';
+import { CartItemInterface } from 'common/types';
 
 export interface ItemCardPropsInterface {
-  cardItem: CardItemInterface;
+  cardItem: CartItemInterface;
   onCardActionClick: () => void;
+  amount: number;
+  incrementAmount: () => void;
+  decrementAmount: () => void;
+  buttonText: string;
 }

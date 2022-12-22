@@ -33,7 +33,6 @@ const loaderSizes: LoaderSizes = {
 };
 
 export const Loader = styled.div<{ $size: 'small' | 'medium' | 'large' }>`
-  position: absolute;
   border: 0.25rem solid ${({ theme }) => theme.colors.background[100]};
   width: 1.7rem;
   height: 1.7rem;

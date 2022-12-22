@@ -4,11 +4,14 @@ export interface StyledButtonPropsInterface {
   $color?: ColorStringPathType;
   $backgroundColor?: ColorStringPathType;
   $additionalStyles?: CssStyleProps;
+  disabled?: boolean;
 }
 
 export interface ButtonPropsInterface {
   text?: string;
+  disabled?: boolean;
   type?: 'button' | 'submit';
+  isLoading?: boolean;
   backgroundColor?: ColorStringPathType;
   color?: ColorStringPathType;
   additionalStyles?: CssStyleProps;

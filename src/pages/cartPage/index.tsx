@@ -14,6 +14,8 @@ import CartItemCard from './cartItemCard';
 import { BaseHeaderThree } from 'common/styles/baseComponents';
 import { reduceCartToTotalPrice, searchItemResult, sortItems } from './utils';
 import Button from 'components/button';
+import { useNavigate } from 'react-router-dom';
+import { basePathKeys } from 'routes/pathKeys';
 
 const CartPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -22,10 +24,11 @@ const CartPage = () => {
   const [items] = useCartStore((store) => store.items);
   const searchedItems = searchItemResult(items, debouncedSearch);
   const sortedItems = sortItems(searchedItems, sort.value);
+  const isCheckoutDisabled = items.length === 0;
+  const navigate = useNavigate();
 
-  // TODO: create checkout page and navigate
   const handleCheckout = () => {
-    console.log(1);
+    navigate(basePathKeys.CURRENT_ORDER);
   };
 
   return (
@@ -40,7 +43,12 @@ const CartPage = () => {
         />
         <TotalContainer>
           <BaseHeaderThree>Total: ${reduceCartToTotalPrice(items)}</BaseHeaderThree>
-          <Button backgroundColor='secondary.100' text='Checkout' onClick={handleCheckout} />
+          <Button
+            disabled={isCheckoutDisabled}
+            backgroundColor='secondary.100'
+            text='Checkout'
+            onClick={handleCheckout}
+          />
         </TotalContainer>
       </TopContainer>
       <CartItemsContainer>

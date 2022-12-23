@@ -5,6 +5,7 @@ import { RouteInterface } from './types';
 const GoodsPage = lazy(() => import('../pages/goodsPage'));
 const CartPage = lazy(() => import('../pages/cartPage'));
 const OrdersPage = lazy(() => import('../pages/ordersPage'));
+const CurrentOrderPage = lazy(() => import('../pages/currentOrderPage'));
 
 export const baseRoutes: RouteInterface[] = [
   {
@@ -18,5 +19,9 @@ export const baseRoutes: RouteInterface[] = [
   {
     path: basePathKeys.ORDERS,
     Component: OrdersPage,
+  },
+  {
+    path: basePathKeys.CURRENT_ORDER,
+    Component: CurrentOrderPage,
   },
 ];

@@ -31,6 +31,11 @@ export const cartReducer = (state: CartInitialState, action: CartActions) =>
         break;
       }
 
+      case CardActionTypes.CLEAR_CART: {
+        draft.items = [];
+        break;
+      }
+
       default: {
         break;
       }

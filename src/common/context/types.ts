@@ -8,6 +8,7 @@ export enum CardActionTypes {
   ADD_TO_CART = 'ADD_TO_CART',
   REMOVE_FROM_CART = 'REMOVE_FROM_CART',
   CHANGE_ITEM_QUANTITY = 'CHANGE_ITEM_QUANTITY',
+  CLEAR_CART = 'CLEAR_CART',
 }
 
 export type AddToCart = {
@@ -32,4 +33,8 @@ export type RemoveFromCart = {
   };
 };
 
-export type CartActions = AddToCart | RemoveFromCart | DecrementItemQuantity;
+export type ClearCart = {
+  type: CardActionTypes.CLEAR_CART;
+};
+
+export type CartActions = AddToCart | RemoveFromCart | DecrementItemQuantity | ClearCart;

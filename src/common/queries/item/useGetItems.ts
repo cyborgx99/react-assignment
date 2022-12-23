@@ -11,7 +11,7 @@ const API_RESPONSE_HEADER_TOTAL_COUNT = 'x-total-count';
 
 const getAllItems = async (page: number, search: string, sort: SortType) => {
   const response = await httpService.getWithResponseHeaders<CartItemInterface[]>(
-    `${apiUrls.getItems}?_page=${page}&_limit=${10}&name_like=${search}&_sort=name&_order=${sort}`,
+    `${apiUrls.items}?_page=${page}&_limit=${10}&name_like=${search}&_sort=name&_order=${sort}`,
   );
 
   return response.headers[API_RESPONSE_HEADER_TOTAL_COUNT]

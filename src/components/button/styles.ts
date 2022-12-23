@@ -1,9 +1,11 @@
 import get from 'lodash.get';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { StyledButtonPropsInterface } from './types';
 
 export const StyledButton = styled.button<StyledButtonPropsInterface>`
   width: 100%;
+  display: flex;
+  justify-content: center;
   font-size: 1rem;
   line-height: ${({ theme }) => theme.lineHeights.paragraph};
   background-color: ${({ theme, $backgroundColor }) =>
@@ -19,6 +21,19 @@ export const StyledButton = styled.button<StyledButtonPropsInterface>`
     scale: 1.025;
     font-weight: bold;
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${({ theme }) => theme.colors.background[100]};
+      color: ${({ theme }) => theme.colors.background[300]};
+
+      :hover {
+        scale: 1;
+        font-weight: normal;
+        cursor: default;
+      }
+    `};
 
   ${({ $additionalStyles }) => $additionalStyles};
 `;

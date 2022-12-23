@@ -61,3 +61,10 @@ export const BaseParagraph = styled.span<{
   line-height: ${({ theme }) => theme.lineHeights.paragraph};
   color: ${({ theme, $color }) => get(theme.colors, $color ?? 'text.100')};
 `;
+
+export const BaseLabel = styled.label<{ $fontSize?: FontSizeValues; $color?: ColorStringPathType }>`
+  font-size: ${({ $fontSize }) => `${$fontSize ?? 1}rem`};
+  color: ${({ theme, $color }) => get(theme.colors, $color ?? 'text.100')};
+  line-height: ${({ theme }) => theme.lineHeights.paragraph};
+  font-weight: 300;
+`;

@@ -6,4 +6,5 @@ export interface ListItemPropsInterface {
 
 export interface OrderListPropsInterface {
   items: CartItemInterfaceWithAmount[];
+  type?: 'orderPage';
 }

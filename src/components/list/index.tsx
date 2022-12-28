@@ -3,9 +3,9 @@ import ListItem from './listItem';
 import { StyledList } from './styles';
 import { OrderListPropsInterface } from './types';
 
-const OrderList = ({ items }: OrderListPropsInterface) => {
+const OrderList = ({ items, type }: OrderListPropsInterface) => {
   return (
-    <StyledList>
+    <StyledList $type={type}>
       {items.map((item) => (
         <ListItem key={item.id} item={item} />
       ))}

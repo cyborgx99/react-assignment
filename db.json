@@ -91,5 +91,48 @@
       "price": 25
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "deliveryInformation": {
+        "name": "123",
+        "lastName": "123",
+        "email": "cyborgx999@gmail.com",
+        "phone": "123123",
+        "address": "asdf",
+        "city": "123"
+      },
+      "orderItems": [
+        {
+          "id": 11,
+          "photo": "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=901&q=80",
+          "name": "Broccoli",
+          "price": 14,
+          "amount": 1
+        }
+      ],
+      "date": "2022-12-23T15:09:25.619Z",
+      "id": 1
+    },
+    {
+      "deliveryInformation": {
+        "name": "Serjio",
+        "lastName": "Kalashnykov",
+        "email": "cyborgx999@gmail.com",
+        "phone": "123123",
+        "address": "asdf",
+        "city": "123"
+      },
+      "orderItems": [
+        {
+          "id": 10,
+          "photo": "https://images.unsplash.com/photo-1590005024862-6b67679a29fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=440&q=80",
+          "name": "Avocado",
+          "price": 10,
+          "amount": 1
+        }
+      ],
+      "date": "2022-12-23T20:23:44.608Z",
+      "id": 2
+    }
+  ]
 }

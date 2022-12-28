@@ -42,7 +42,7 @@ export const NavigationContainer = styled.nav<{ $isShown: boolean }>`
   position: fixed;
   display: none;
   flex-direction: column;
-  height: calc(100% - 3.75rem);
+  height: calc(100% - 3.625rem);
   width: 14rem;
   background-color: ${({ theme }) => theme.colors.text[100]};
   right: 0;

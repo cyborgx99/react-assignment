@@ -7,8 +7,7 @@ import { useScrollRef } from 'components/layout/scrollRefContext';
 import Pagination from 'components/pagination';
 import React, { useCallback, useEffect, useState } from 'react';
 import { GoodsContainer, GoodsItemsContainer } from './styles';
-
-const DEFAULT_ITEMS_PER_PAGE = 10;
+import { DEFAULT_ITEMS_PER_PAGE } from 'common/constants';
 
 const GoodsPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -31,7 +30,7 @@ const GoodsPage = () => {
     <GoodsContainer>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
       <GoodsItemsContainer>
-        {data?.items.map((item) => (
+        {(data?.items ?? []).map((item) => (
           <GoodsItemCard key={item.id} cardItem={item} />
         ))}
       </GoodsItemsContainer>

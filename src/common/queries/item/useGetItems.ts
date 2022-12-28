@@ -1,3 +1,4 @@
+import { API_RESPONSE_HEADER_TOTAL_COUNT } from 'common/constants';
 import { httpService } from 'common/services/http.service';
 import { CartItemInterface } from 'common/types';
 import { SortType } from 'common/types/sort.type';
@@ -6,8 +7,6 @@ import { ErrorWithMessage } from 'utils/errorUtils';
 import { apiUrls } from '../apiUrls';
 import { queryKeys } from '../queryKeys';
 import { GetItemsResponse } from './types';
-
-const API_RESPONSE_HEADER_TOTAL_COUNT = 'x-total-count';
 
 const getAllItems = async (page: number, search: string, sort: SortType) => {
   const response = await httpService.getWithResponseHeaders<CartItemInterface[]>(

@@ -21,7 +21,7 @@ export type AddToCart = {
 export type DecrementItemQuantity = {
   type: CardActionTypes.CHANGE_ITEM_QUANTITY;
   payload: {
-    id: string;
+    id: number;
     value: number;
   };
 };
@@ -29,7 +29,7 @@ export type DecrementItemQuantity = {
 export type RemoveFromCart = {
   type: CardActionTypes.REMOVE_FROM_CART;
   payload: {
-    id: string;
+    id: number;
   };
 };
 

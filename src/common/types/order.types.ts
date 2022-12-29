@@ -4,7 +4,7 @@ import { CartItemInterfaceWithAmount } from './item.types';
 export interface CreateOrderInterface {
   deliveryInformation: CurrentOrderFormInterface;
   orderItems: CartItemInterfaceWithAmount[];
-  date: Date;
+  date: string;
 }
 
 export interface OrderInterface extends CreateOrderInterface {

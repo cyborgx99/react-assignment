@@ -1,3 +1,3 @@
-export const dateToDdMmYyyy = (date: Date) => {
-  return date.toLocaleString().slice(0, 10).split('-').reverse().join('/');
+export const dateToYyyyMmDd = (date: Date) => {
+  return date.toISOString().split('T', 1)[0];
 };

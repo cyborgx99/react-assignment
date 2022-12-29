@@ -7,6 +7,7 @@ import OrderList from 'components/list';
 import { Formik } from 'formik';
 import { reduceCartToTotalPrice } from 'pages/cartPage/utils';
 import React, { useState } from 'react';
+import { dateToYyyyMmDd } from 'utils/dateUtils';
 import CurrentOrderForm from './currentOrderForm';
 import OrderSuccessMessage from './orderSuccessMessage';
 import { CurrentOrderPageContainer, DetailsHeader, OrderFormWrapper } from './styles';
@@ -24,7 +25,7 @@ const CurrentOrderPage = () => {
       newOrder: {
         deliveryInformation: formData,
         orderItems: items,
-        date: new Date(),
+        date: dateToYyyyMmDd(new Date()),
       },
     });
 

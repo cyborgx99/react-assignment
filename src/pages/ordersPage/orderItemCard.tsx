@@ -8,7 +8,6 @@ import {
   DeliveryInformationWrapper,
 } from './styles';
 import { OrderItemCardPropsInterface } from './types';
-import { dateToDdMmYyyy } from 'utils/dateUtils';
 import { reduceCartToTotalPrice } from 'pages/cartPage/utils';
 
 const OrderItemCard = ({ order }: OrderItemCardPropsInterface) => {
@@ -45,7 +44,7 @@ const OrderItemCard = ({ order }: OrderItemCardPropsInterface) => {
       <OrderList type='orderPage' items={order.orderItems} />
       <InformationWrapper>
         <NameField>Date: </NameField>
-        <BaseParagraph>{dateToDdMmYyyy(order.date)}</BaseParagraph>
+        <BaseParagraph>{order.date}</BaseParagraph>
       </InformationWrapper>
       <BaseHeaderFour>Total: ${reduceCartToTotalPrice(order.orderItems)}</BaseHeaderFour>
     </OrderItemCardWrapper>

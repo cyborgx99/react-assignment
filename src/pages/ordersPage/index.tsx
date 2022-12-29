@@ -7,7 +7,7 @@ import { useScrollRef } from 'components/layout/scrollRefContext';
 import Pagination from 'components/pagination';
 import React, { useCallback, useEffect, useState } from 'react';
 import OrderItemCard from './orderItemCard';
-import { OrdersContainer, OrdersItemsContainer } from './styles';
+import { HeaderTitle, OrdersContainer, OrdersItemsContainer } from './styles';
 
 const OrdersPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -15,6 +15,7 @@ const OrdersPage = () => {
   const debouncedSearch = useDebounce(search, 500);
   const { scrollRef } = useScrollRef();
   const [page, setPage] = useState(1);
+
   const { data } = useGetOrders(page, debouncedSearch, sort.value);
 
   const onPageChange = useCallback((page: number) => {
@@ -29,6 +30,7 @@ const OrdersPage = () => {
   return (
     <OrdersContainer>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+      <HeaderTitle>Your orders: </HeaderTitle>
       <OrdersItemsContainer>
         {(data?.orders ?? []).map((order) => (
           <OrderItemCard order={order} key={order.id} />

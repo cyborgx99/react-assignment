@@ -1,4 +1,5 @@
-import { BaseHeaderSix } from 'common/styles/baseComponents';
+import { BaseHeaderOne, BaseHeaderSix } from 'common/styles/baseComponents';
+
 import styled from 'styled-components';
 
 export const OrdersContainer = styled.div`
@@ -48,4 +49,9 @@ export const InformationWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+`;
+
+export const HeaderTitle = styled(BaseHeaderOne)`
+  text-align: center;
+  margin-top: 1rem;
 `;

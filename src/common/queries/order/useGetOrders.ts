@@ -1,3 +1,4 @@
+import { API_RESPONSE_HEADER_TOTAL_COUNT } from 'common/constants';
 import { httpService } from 'common/services/http.service';
 import { OrderInterface } from 'common/types/order.types';
 import { SortType } from 'common/types/sort.type';
@@ -7,11 +8,9 @@ import { apiUrls } from '../apiUrls';
 import { queryKeys } from '../queryKeys';
 import { GetOrdersResponse } from './types';
 
-const API_RESPONSE_HEADER_TOTAL_COUNT = 'x-total-count';
-
 const getAllOrders = async (page: number, search: string, sort: SortType) => {
   const response = await httpService.getWithResponseHeaders<OrderInterface[]>(
-    `${apiUrls.orders}?_page=${page}&_limit=${10}&name_like=${search}&_sort=name&_order=${sort}`,
+    `${apiUrls.orders}?_page=${page}&_limit=${10}&q=${search}&_sort=date&_order=${sort}`,
   );
 
   return response.headers[API_RESPONSE_HEADER_TOTAL_COUNT]

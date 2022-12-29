@@ -6,5 +6,5 @@ export const phoneRegExp =
 export const stringRequiredMinMax = yup
   .string()
   .required('Field is required')
-  .min(2, 'Must be longer than 2 characters')
+  .min(3, 'Must be longer than 2 characters')
   .max(64, 'Must be shorter than 64 characters');

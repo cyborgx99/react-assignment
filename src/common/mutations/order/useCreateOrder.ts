@@ -1,12 +1,12 @@
 import { apiUrls } from 'common/queries/apiUrls';
 import { httpService } from 'common/services/http.service';
-import { OrderInterface } from 'common/types/order.types';
+import { CreateOrderInterface, OrderInterface } from 'common/types/order.types';
 import { useMutation } from 'react-query';
 import { ErrorWithMessage } from 'utils/errorUtils';
 import { CreateOrderInputInterface } from './types';
 
 const createOrder = async (data: CreateOrderInputInterface) => {
-  return httpService.post<OrderInterface, OrderInterface>(`${apiUrls.orders}`, {
+  return httpService.post<OrderInterface, CreateOrderInterface>(`${apiUrls.orders}`, {
     ...data.newOrder,
   });
 };

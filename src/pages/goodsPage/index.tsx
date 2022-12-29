@@ -6,9 +6,8 @@ import GoodsItemCard from 'pages/goodsPage/goodsItemCard';
 import { useScrollRef } from 'components/layout/scrollRefContext';
 import Pagination from 'components/pagination';
 import React, { useCallback, useEffect, useState } from 'react';
-import { GoodsContainer, GoodsItemsContainer } from './styles';
-
-const DEFAULT_ITEMS_PER_PAGE = 10;
+import { GoodsContainer, GoodsItemsContainer, HeaderSpan, HeaderTitle } from './styles';
+import { DEFAULT_ITEMS_PER_PAGE } from 'common/constants';
 
 const GoodsPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -29,9 +28,13 @@ const GoodsPage = () => {
 
   return (
     <GoodsContainer>
+      <HeaderTitle $color='text.100'>
+        Welcome to Food
+        <HeaderSpan $color='secondary.100'>Hub</HeaderSpan>
+      </HeaderTitle>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
       <GoodsItemsContainer>
-        {data?.items.map((item) => (
+        {(data?.items ?? []).map((item) => (
           <GoodsItemCard key={item.id} cardItem={item} />
         ))}
       </GoodsItemsContainer>

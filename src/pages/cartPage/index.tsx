@@ -2,7 +2,7 @@ import { useCartStore } from 'common/context/cartContextProvider';
 import useDebounce from 'common/hooks/useDebounceValue';
 import ContentFilter, { sortOptions } from 'components/contentFilter';
 import { SortOptionValue } from 'components/contentFilter/types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   CartContainer,
   CartItemsContainer,
@@ -16,6 +16,7 @@ import { reduceCartToTotalPrice, searchItemResult, sortItems } from './utils';
 import Button from 'components/button';
 import { useNavigate } from 'react-router-dom';
 import { basePathKeys } from 'routes/pathKeys';
+import { useScrollRef } from 'components/layout/scrollRefContext';
 
 const CartPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -26,6 +27,13 @@ const CartPage = () => {
   const sortedItems = sortItems(searchedItems, sort.value);
   const isCheckoutDisabled = items.length === 0;
   const navigate = useNavigate();
+  const { scrollRef } = useScrollRef();
+
+  useEffect(() => {
+    if (!scrollRef?.current) return;
+    scrollRef.current.scrollTo({ left: 0, top: 0 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleCheckout = () => {
     navigate(basePathKeys.CURRENT_ORDER);

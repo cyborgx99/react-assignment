@@ -1,5 +1,5 @@
-import { OrderInterface } from 'common/types/order.types';
+import { CreateOrderInterface } from 'common/types/order.types';
 
 export interface CreateOrderInputInterface {
-  newOrder: OrderInterface;
+  newOrder: CreateOrderInterface;
 }

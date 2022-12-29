@@ -1,3 +1,4 @@
+import { BaseHeaderOne, BaseSpan } from 'common/styles/baseComponents';
 import styled from 'styled-components';
 
 export const GoodsContainer = styled.div`
@@ -15,4 +16,14 @@ export const GoodsItemsContainer = styled.div`
   margin: 1rem 0;
   width: 100%;
   justify-content: space-between;
+`;
+
+export const HeaderTitle = styled(BaseHeaderOne)`
+  text-align: center;
+  margin-bottom: 1rem;
+`;
+
+export const HeaderSpan = styled(BaseSpan)`
+  font-size: ${({ theme }) => `${theme.fontSizes.h1}rem`};
+  line-height: ${({ theme }) => theme.lineHeights.heading};
 `;

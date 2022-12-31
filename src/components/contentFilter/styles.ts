@@ -11,6 +11,10 @@ export const FilterContainer = styled.div<{ $additionalStyles?: CssStyleProps }>
 
   @media ${({ theme }) => theme.device.tablet} {
     flex-wrap: nowrap;
+    > * {
+      flex-basis: 50%;
+      flex-grow: 1;
+    }
   }
 
   @media ${({ theme }) => theme.device.desktop} {

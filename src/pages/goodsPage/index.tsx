@@ -8,6 +8,7 @@ import Pagination from 'components/pagination';
 import React, { useCallback, useEffect, useState } from 'react';
 import { GoodsContainer, GoodsItemsContainer, HeaderSpan, HeaderTitle } from './styles';
 import { DEFAULT_ITEMS_PER_PAGE } from 'common/constants';
+import { BaseParagraph } from 'common/styles/baseComponents';
 
 const GoodsPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
@@ -15,7 +16,7 @@ const GoodsPage = () => {
   const debouncedSearch = useDebounce(search, 500);
   const { scrollRef } = useScrollRef();
   const [page, setPage] = useState(1);
-  const { data } = useGetItems(page, debouncedSearch, sort.value);
+  const { data, error } = useGetItems(page, debouncedSearch, sort.value);
 
   const onPageChange = useCallback((page: number) => {
     setPage(page);
@@ -23,7 +24,7 @@ const GoodsPage = () => {
 
   useEffect(() => {
     if (!scrollRef?.current) return;
-    scrollRef.current.scrollTo({ left: 0, top: 0 });
+    scrollRef.current.scrollTo?.({ left: 0, top: 0 });
   }, [scrollRef, page]);
 
   return (
@@ -34,6 +35,7 @@ const GoodsPage = () => {
       </HeaderTitle>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
       <GoodsItemsContainer>
+        <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
         {(data?.items ?? []).map((item) => (
           <GoodsItemCard key={item.id} cardItem={item} />
         ))}

@@ -1,6 +1,6 @@
 import CurrentOrderForm from './currentOrderForm';
 import userEvent from '@testing-library/user-event';
-import { act, cleanup, screen, waitFor } from '@testing-library/react';
+import { act, cleanup, waitFor } from '@testing-library/react';
 import { render } from 'utils/test-utils';
 
 const formData = {
@@ -43,8 +43,6 @@ test('shows field is required errors', async () => {
   await act(async () => {
     await user.click(getByRole('button', { name: /Order/i }));
   });
-
-  screen.debug();
 
   await waitFor(() => expect(handleSubmit).toHaveBeenCalledTimes(0));
 

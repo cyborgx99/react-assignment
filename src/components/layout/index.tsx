@@ -1,3 +1,4 @@
+import ErrorBoundary from 'components/errorBoundary';
 import React, { useRef } from 'react';
 import { Outlet } from 'react-router-dom';
 import PageFooter from '../pageFooter';
@@ -10,13 +11,15 @@ const PageLayout = ({ children }: LayoutPageProps) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <PageContainer>
-      <PageHeader />
-      <ScrollRefContext.Provider value={{ scrollRef }}>
-        <PageContent ref={scrollRef}>{children ? children : <Outlet />}</PageContent>
-      </ScrollRefContext.Provider>
-      <PageFooter />
-    </PageContainer>
+    <ErrorBoundary>
+      <PageContainer>
+        <PageHeader />
+        <ScrollRefContext.Provider value={{ scrollRef }}>
+          <PageContent ref={scrollRef}>{children ? children : <Outlet />}</PageContent>
+        </ScrollRefContext.Provider>
+        <PageFooter />
+      </PageContainer>
+    </ErrorBoundary>
   );
 };
 

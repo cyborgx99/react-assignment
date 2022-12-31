@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-export const getItemsResponse = [
+export const mockItems = [
   {
     id: 1,
     photo:
@@ -21,9 +21,9 @@ export const itemHandlers = [
   rest.get('http://localhost/items', (_req, res, ctx) => {
     return res(
       ctx.status(200),
-      ctx.json(getItemsResponse),
+      ctx.json(mockItems),
       ctx.set({
-        'x-total-count': [`${getItemsResponse.length}`],
+        'x-total-count': [`${mockItems.length}`],
       }),
     );
   }),

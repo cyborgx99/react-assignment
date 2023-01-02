@@ -35,13 +35,4 @@ export const orderHandlers = [
       }),
     );
   }),
-  rest.post('http://localhost/orders', async (req, res, ctx) => {
-    const body = await req.json();
-    const newOrder = {
-      ...body,
-      id: 1,
-    };
-
-    return res(ctx.status(200), ctx.json(newOrder));
-  }),
 ];

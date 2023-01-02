@@ -11,14 +11,7 @@ const FormInput = ({ label = '', type = 'text', name }: FormInputComponentProps)
   return (
     <InputContainer>
       <BaseLabel>{label}</BaseLabel>
-      <StyledFormInput
-        aria-label={name}
-        src={field.value}
-        $hasError={hasError}
-        {...field}
-        name={name}
-        type={type}
-      />
+      <StyledFormInput src={field.value} $hasError={hasError} {...field} name={name} type={type} />
       <BaseLabel $color='danger.200' $fontSize={0.75}>
         {hasError ? error : ''}
       </BaseLabel>

@@ -3,7 +3,7 @@ import QueryProvider from 'queryProvider';
 import React from 'react';
 import { useGetItems } from './useGetItems';
 import { server } from 'mocks/server';
-import { mockItems } from 'mocks/handlers/items.handlers';
+import { getItemsResponse } from 'mocks/handlers/items.handlers';
 import { SortType } from 'common/types/sort.type';
 
 beforeAll(() => server.listen());
@@ -20,7 +20,7 @@ test('fetches correct items', async () => {
   await waitFor(() => expect(result.current.isSuccess).toBe(true));
 
   expect(result.current.data).toEqual({
-    items: mockItems,
+    items: getItemsResponse,
     totalCount: 2,
   });
 });

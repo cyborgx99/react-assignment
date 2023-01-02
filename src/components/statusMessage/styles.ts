@@ -11,11 +11,12 @@ export const SuccessContainer = styled.div`
   gap: 0.5rem;
 `;
 
-export const SuccessIconWrapper = styled.div`
+export const SuccessIconWrapper = styled.div<{ $isSuccess: boolean }>`
   width: 5rem;
   height: 5rem;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.success[300]};
+  background-color: ${({ theme, $isSuccess }) =>
+    $isSuccess ? theme.colors.success[300] : theme.colors.danger[300]};
   position: relative;
 `;
 

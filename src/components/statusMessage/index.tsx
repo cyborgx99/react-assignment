@@ -4,17 +4,18 @@ import React from 'react';
 import { iconStyles, SuccessContainer, SuccessIconWrapper, StyledMessage } from './styles';
 import { SuccessMessagePropsInterface } from './types';
 
-const SuccessMessage = ({ message }: SuccessMessagePropsInterface) => {
+const StatusMessage = ({ message, type }: SuccessMessagePropsInterface) => {
+  const isSuccess = type === 'success';
   return (
     <SuccessContainer>
-      <BaseHeaderThree>Success!</BaseHeaderThree>
-      <SuccessIconWrapper>
+      <BaseHeaderThree>{isSuccess ? 'Success!' : 'Oops!'}</BaseHeaderThree>
+      <SuccessIconWrapper $isSuccess={isSuccess}>
         <Icon
-          title='Success'
+          title={isSuccess ? 'Success' : 'Failure'}
           additionalStyles={iconStyles}
           color='text.white'
           fontSize={2}
-          name='done'
+          name={isSuccess ? 'done' : 'close'}
         />
       </SuccessIconWrapper>
       <StyledMessage>{message}</StyledMessage>
@@ -22,4 +23,4 @@ const SuccessMessage = ({ message }: SuccessMessagePropsInterface) => {
   );
 };
 
-export default SuccessMessage;
+export default StatusMessage;

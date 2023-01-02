@@ -11,11 +11,9 @@ export const GoodsContainer = styled.div`
 
 export const GoodsItemsContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  margin: 1rem -1rem;
   flex-wrap: wrap;
-  margin: 1rem 0;
-  width: 100%;
-  justify-content: space-between;
+  width: calc(100% + 2rem);
 `;
 
 export const HeaderTitle = styled(BaseHeaderOne)`

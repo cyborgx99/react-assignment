@@ -15,6 +15,7 @@ const GoodsItemCard = ({ cardItem }: GoodItemCardInterface) => {
         item: { ...cardItem, amount },
       },
     });
+    setAmount(1);
   };
 
   const decrement = () => {

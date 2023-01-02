@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 
 export const StyledList = styled.ul<{ $type?: 'orderPage' }>`
   list-style: none;
+  margin-bottom: 1rem;
 
   ${({ $type }) =>
     $type !== 'orderPage' &&

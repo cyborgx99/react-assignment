@@ -7,7 +7,7 @@ export const DetailsHeader = styled(BaseHeaderTwo)`
   margin-bottom: 1rem;
 `;
 
-export const OrderSuccessMessageWrapper = styled.div`
+export const OrderMessageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;

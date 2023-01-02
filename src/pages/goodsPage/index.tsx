@@ -1,7 +1,7 @@
 import useDebounce from 'common/hooks/useDebounceValue';
 import { useGetItems } from 'common/queries/item/useGetItems';
 import ContentFilter, { sortOptions } from 'components/contentFilter';
-import { SortOptionValue } from 'components/contentFilter/types';
+import { FilterInterface, SortOptionValue } from 'components/contentFilter/types';
 import GoodsItemCard from 'pages/goodsPage/goodsItemCard';
 import { useScrollRef } from 'components/layout/scrollRefContext';
 import Pagination from 'components/pagination';
@@ -12,20 +12,19 @@ import { BaseParagraph } from 'common/styles/baseComponents';
 
 const GoodsPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
-  const [search, setSearch] = useState('');
-  const debouncedSearch = useDebounce(search, 500);
+  const [filter, setFilter] = useState<FilterInterface>({ search: '', page: 1 });
+  const debouncedFilter = useDebounce(filter, 500);
   const { scrollRef } = useScrollRef();
-  const [page, setPage] = useState(1);
-  const { data, error } = useGetItems(page, debouncedSearch, sort.value);
+  const { data, error } = useGetItems(debouncedFilter.page, debouncedFilter.search, sort.value);
 
   const onPageChange = useCallback((page: number) => {
-    setPage(page);
+    setFilter((previous) => ({ ...previous, page }));
   }, []);
 
   useEffect(() => {
     if (!scrollRef?.current) return;
     scrollRef.current.scrollTo?.({ left: 0, top: 0 });
-  }, [scrollRef, page]);
+  }, [scrollRef, debouncedFilter.page]);
 
   return (
     <GoodsContainer>
@@ -33,7 +32,7 @@ const GoodsPage = () => {
         Welcome to Food
         <HeaderSpan $color='secondary.100'>Hub</HeaderSpan>
       </HeaderTitle>
-      <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+      <ContentFilter setFilter={setFilter} search={filter.search} sort={sort} setSort={setSort} />
       <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
       <GoodsItemsContainer>
         {(data?.items ?? []).map((item) => (
@@ -41,7 +40,7 @@ const GoodsPage = () => {
         ))}
       </GoodsItemsContainer>
       <Pagination
-        currentPage={page}
+        currentPage={debouncedFilter.page}
         totalCount={data?.totalCount ?? 0}
         itemsPerPage={DEFAULT_ITEMS_PER_PAGE}
         onPageChange={onPageChange}

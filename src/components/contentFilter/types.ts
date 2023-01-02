@@ -6,8 +6,13 @@ export interface SortOptionValue {
   value: SortType;
 }
 
+export interface FilterInterface {
+  page: number;
+  search: string;
+}
+
 export interface ContentFilterPropsInterface {
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
+  setFilter: React.Dispatch<React.SetStateAction<FilterInterface>>;
   setSort: React.Dispatch<React.SetStateAction<SortOptionValue>>;
   sort: SortOptionValue;
   search: string;

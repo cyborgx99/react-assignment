@@ -1,10 +1,8 @@
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import { useState } from 'react';
-import { cleanup, render } from 'utils/test-utils';
+import { render } from 'utils/test-utils';
 import Pagination from './index';
-
-afterEach(cleanup);
 
 const PaginationWrapper = () => {
   const [currentPage, setCurrentPage] = useState(1);

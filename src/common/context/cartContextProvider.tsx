@@ -16,5 +16,7 @@ const CartContextProvider = ({ children }: PropsWithChildren) => {
   return <CartProvider>{children}</CartProvider>;
 };
 
-export { useCartStore };
+const itemsSelector = (store: CartInitialState) => store.items;
+
+export { useCartStore, itemsSelector };
 export default CartContextProvider;

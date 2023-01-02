@@ -31,7 +31,7 @@ const CartPage = () => {
 
   useEffect(() => {
     if (!scrollRef?.current) return;
-    scrollRef.current.scrollTo({ left: 0, top: 0 });
+    scrollRef.current.scrollTo?.({ left: 0, top: 0 });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

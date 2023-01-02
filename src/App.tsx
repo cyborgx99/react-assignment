@@ -5,6 +5,7 @@ import { GlobalStyle } from './common/styles/globalStyles';
 import { myTheme } from './common/styles/theme';
 import AppRoutes from './routes/routes';
 import CartContextProvider from 'common/context/cartContextProvider';
+import { BrowserRouter } from 'react-router-dom';
 
 const App = () => {
   return (
@@ -12,7 +13,9 @@ const App = () => {
       <GlobalStyle />
       <QueryProvider>
         <CartContextProvider>
-          <AppRoutes />
+          <BrowserRouter>
+            <AppRoutes />
+          </BrowserRouter>
         </CartContextProvider>
       </QueryProvider>
     </ThemeProvider>

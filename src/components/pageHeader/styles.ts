@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { BaseHeaderOne, BaseSpan } from 'common/styles/baseComponents';
+import styled from 'styled-components';
+import { BaseHeaderOne, BaseLink, BaseSpan } from 'common/styles/baseComponents';
 
-export const headerIconAdditionalStyles = css`
+export const HomeLink = styled(BaseLink)`
   margin-right: auto;
 `;
 
@@ -23,7 +23,7 @@ export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.colors.text[100]};
   display: flex;
   text-align: center;
-  padding: 0.5rem 1rem;
+  padding: ${({ theme }) => `${theme.spacings.half}rem ${theme.spacings.one}rem`};
   align-items: center;
   justify-content: center;
 `;

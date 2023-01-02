@@ -1,6 +1,7 @@
 import { DEFAULT_ITEMS_PER_PAGE } from 'common/constants';
 import useDebounce from 'common/hooks/useDebounceValue';
 import { useGetOrders } from 'common/queries/order/useGetOrders';
+import { BaseParagraph } from 'common/styles/baseComponents';
 import ContentFilter, { sortOptions } from 'components/contentFilter';
 import { SortOptionValue } from 'components/contentFilter/types';
 import { useScrollRef } from 'components/layout/scrollRefContext';
@@ -16,7 +17,7 @@ const OrdersPage = () => {
   const { scrollRef } = useScrollRef();
   const [page, setPage] = useState(1);
 
-  const { data } = useGetOrders(page, debouncedSearch, sort.value);
+  const { data, error } = useGetOrders(page, debouncedSearch, sort.value);
 
   const onPageChange = useCallback((page: number) => {
     setPage(page);
@@ -24,7 +25,7 @@ const OrdersPage = () => {
 
   useEffect(() => {
     if (!scrollRef?.current) return;
-    scrollRef.current.scrollTo({ left: 0, top: 0 });
+    scrollRef.current.scrollTo?.({ left: 0, top: 0 });
   }, [scrollRef, page]);
 
   return (
@@ -32,6 +33,7 @@ const OrdersPage = () => {
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
       <HeaderTitle>Your orders: </HeaderTitle>
       <OrdersItemsContainer>
+        <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
         {(data?.orders ?? []).map((order) => (
           <OrderItemCard order={order} key={order.id} />
         ))}

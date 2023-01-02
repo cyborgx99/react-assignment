@@ -1,8 +1,9 @@
 import NavigationBar from 'components/navigation';
 import React, { useState } from 'react';
+import { basePathKeys } from 'routes/pathKeys';
 import Icon from '../icon';
 import {
-  headerIconAdditionalStyles,
+  HomeLink,
   HeaderSpan,
   HeaderTitle,
   NavButton,
@@ -20,13 +21,9 @@ const PageHeader = () => {
   return (
     <>
       <StyledHeader>
-        <Icon
-          title='Home'
-          additionalStyles={headerIconAdditionalStyles}
-          color='text.white'
-          fontSize={2}
-          name='lunch_dining'
-        />
+        <HomeLink to={basePathKeys.HOME}>
+          <Icon title='Home' color='text.white' fontSize={2} name='lunch_dining' />
+        </HomeLink>
         <HeaderTitle $color='text.white'>
           Food
           <HeaderSpan $color='secondary.100'>Hub</HeaderSpan>

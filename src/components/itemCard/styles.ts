@@ -10,21 +10,15 @@ export const CardImage = styled.img`
 export const ItemCardContainer = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primary[100]};
   border-radius: ${({ theme }) => theme.borderRadius.default};
-  width: 100%;
-  flex-grow: 1;
-  flex-basis: 50%;
-
-  :last-child {
-    margin-right: auto;
-  }
+  margin: 1rem;
+  width: calc((100% - 2 * 1rem) / 1);
 
   @media ${({ theme }) => theme.device.tablet} {
-    flex-grow: 0;
-    flex-basis: 49%;
+    width: calc((100% - 4 * 1rem) / 2);
   }
 
   @media ${({ theme }) => theme.device.desktop} {
-    flex-basis: 32.5%;
+    width: calc((100% - 6 * 1rem) / 3);
   }
 `;
 
@@ -43,5 +37,5 @@ export const AmountContainer = styled.div`
 export const amountButtonStyles = css`
   padding: 0 0.5rem;
   margin: 0;
-  width: min-content;
+  width: 2rem;
 `;

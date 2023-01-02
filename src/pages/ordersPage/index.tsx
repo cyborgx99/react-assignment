@@ -32,8 +32,8 @@ const OrdersPage = () => {
     <OrdersContainer>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
       <HeaderTitle>Your orders: </HeaderTitle>
+      <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
       <OrdersItemsContainer>
-        <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
         {(data?.orders ?? []).map((order) => (
           <OrderItemCard order={order} key={order.id} />
         ))}

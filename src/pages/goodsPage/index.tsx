@@ -34,8 +34,8 @@ const GoodsPage = () => {
         <HeaderSpan $color='secondary.100'>Hub</HeaderSpan>
       </HeaderTitle>
       <ContentFilter setSearch={setSearch} search={search} sort={sort} setSort={setSort} />
+      <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
       <GoodsItemsContainer>
-        <BaseParagraph $color='danger.100'>{error?.message}</BaseParagraph>
         {(data?.items ?? []).map((item) => (
           <GoodsItemCard key={item.id} cardItem={item} />
         ))}

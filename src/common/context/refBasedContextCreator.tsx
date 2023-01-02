@@ -7,9 +7,11 @@ import React, {
   PropsWithChildren,
 } from 'react';
 
-export default function createRefBasedContext<Store, ActionTypes>(
+export default function createRefBasedContext<Store, ActionTypes extends { type: string }>(
   initialState: Store,
   reducer: (state: Store, action: ActionTypes) => Store,
+  afterWareFns?: ((state: Store) => void)[],
+  ignoredActionTypes?: string[],
 ) {
   function useStoreData(): {
     get: () => Store;
@@ -25,6 +27,11 @@ export default function createRefBasedContext<Store, ActionTypes>(
     const dispatch = useCallback((action: ActionTypes) => {
       store.current = reducer(store.current, action);
       subscribers.current.forEach((callback) => callback());
+
+      if (ignoredActionTypes?.includes(action.type)) return;
+      afterWareFns?.forEach((afterWareFn) => {
+        afterWareFn(store.current);
+      });
     }, []);
 
     const subscribe = useCallback((callback: () => void) => {

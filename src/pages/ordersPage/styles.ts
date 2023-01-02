@@ -12,31 +12,28 @@ export const OrdersContainer = styled.div`
 
 export const OrdersItemsContainer = styled.div`
   display: flex;
-  gap: 0.5rem;
+  width: calc(100% + 2rem);
+  margin: 1rem -1rem;
   flex-wrap: wrap;
-  margin: 1rem 0;
-  width: 100%;
-  align-items: flex-start;
 `;
 
 export const DeliveryInformationWrapper = styled.div``;
 
 export const OrderItemCardWrapper = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   border: 1px solid ${({ theme }) => theme.colors.secondary[100]};
   padding: 1rem;
+  margin: 1rem;
   border-radius: ${({ theme }) => theme.borderRadius.default};
+  width: calc((100% - 2 * 1rem) / 1);
 
   @media ${({ theme }) => theme.device.tablet} {
-    flex-grow: 0;
-    flex-basis: 49%;
+    width: calc((100% - 4 * 1rem) / 2);
   }
 
   @media ${({ theme }) => theme.device.desktop} {
-    flex-basis: 32.5%;
+    width: calc((100% - 6 * 1rem) / 3);
   }
 `;
 
@@ -49,6 +46,7 @@ export const InformationWrapper = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: wrap;
+  margin-top: auto;
 `;
 
 export const HeaderTitle = styled(BaseHeaderOne)`

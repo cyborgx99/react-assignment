@@ -7,3 +7,7 @@ export interface HttpServiceInterface {
   patch<R, D>(url: string, data: D, config?: AxiosRequestConfig<D>): Promise<R>;
   delete<R>(url: string, config?: AxiosRequestConfig): Promise<R>;
 }
+
+export enum LocalStorageKeys {
+  cart = 'cart',
+}

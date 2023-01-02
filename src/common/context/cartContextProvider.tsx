@@ -1,3 +1,5 @@
+import { localStorageService } from 'common/services/local-storage.service';
+import { LocalStorageKeys } from 'common/services/types';
 import React, { PropsWithChildren } from 'react';
 import { cartReducer } from './cartReducer';
 import createRefBasedContext from './refBasedContextCreator';
@@ -7,9 +9,15 @@ const cartContextInitialValues: CartInitialState = {
   items: [],
 };
 
+const updateLocalStorage = <T,>(state: T) => {
+  localStorageService.setLocalStorageItem(LocalStorageKeys.cart, state);
+};
+
 const { Provider: CartProvider, useStore: useCartStore } = createRefBasedContext(
-  cartContextInitialValues,
+  localStorageService.getLocalStorageItem<CartInitialState>(LocalStorageKeys.cart) ??
+    cartContextInitialValues,
   cartReducer,
+  [updateLocalStorage],
 );
 
 const CartContextProvider = ({ children }: PropsWithChildren) => {

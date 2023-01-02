@@ -16,7 +16,7 @@ import CartCounter from './cartCounter';
 const NavigationBar = ({ navType }: NavigationBarPropsInterface) => {
   return (
     <StyledBottomNav $navType={navType}>
-      <BaseLink to={basePathKeys.HOME}>
+      <BaseLink data-testid={basePathKeys.HOME} to={basePathKeys.HOME}>
         {({ isActive }) => (
           <IconWrapper>
             <Icon
@@ -30,7 +30,7 @@ const NavigationBar = ({ navType }: NavigationBarPropsInterface) => {
           </IconWrapper>
         )}
       </BaseLink>
-      <CartLink to={basePathKeys.CART}>
+      <CartLink data-testid={basePathKeys.CART} to={basePathKeys.CART}>
         {({ isActive }) => (
           <IconWrapper>
             <Icon
@@ -47,7 +47,7 @@ const NavigationBar = ({ navType }: NavigationBarPropsInterface) => {
           </IconWrapper>
         )}
       </CartLink>
-      <BaseLink to={basePathKeys.ORDERS}>
+      <BaseLink data-testid={basePathKeys.ORDERS} to={basePathKeys.ORDERS}>
         {({ isActive }) => (
           <IconWrapper>
             <Icon

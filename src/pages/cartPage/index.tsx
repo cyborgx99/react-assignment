@@ -1,7 +1,7 @@
 import { useCartStore } from 'common/context/cartContextProvider';
 import useDebounce from 'common/hooks/useDebounceValue';
 import ContentFilter, { sortOptions } from 'components/contentFilter';
-import { SortOptionValue } from 'components/contentFilter/types';
+import { FilterInterface, SortOptionValue } from 'components/contentFilter/types';
 import React, { useEffect, useState } from 'react';
 import {
   CartContainer,
@@ -20,10 +20,10 @@ import { useScrollRef } from 'components/layout/scrollRefContext';
 
 const CartPage = () => {
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
-  const [search, setSearch] = useState('');
-  const debouncedSearch = useDebounce(search, 500);
+  const [filter, setFilter] = useState<FilterInterface>({ search: '', page: 1 });
+  const debouncedFilter = useDebounce(filter, 500);
   const [items] = useCartStore((store) => store.items);
-  const searchedItems = searchItemResult(items, debouncedSearch);
+  const searchedItems = searchItemResult(items, debouncedFilter.search);
   const sortedItems = sortItems(searchedItems, sort.value);
   const isCheckoutDisabled = items.length === 0;
   const navigate = useNavigate();
@@ -44,8 +44,8 @@ const CartPage = () => {
       <TopContainer>
         <ContentFilter
           additionalStyles={contentFilterAdditionalStyles}
-          setSearch={setSearch}
-          search={search}
+          setFilter={setFilter}
+          search={filter.search}
           sort={sort}
           setSort={setSort}
         />

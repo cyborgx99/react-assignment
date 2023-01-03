@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import { cleanup, render } from 'utils/test-utils';
+import { render } from 'utils/test-utils';
 import GoodsItemCard from './goodsItemCard';
 
 const cardItem = {
@@ -9,8 +9,6 @@ const cardItem = {
   name: 'Salad',
   price: 10,
 };
-
-afterEach(cleanup);
 
 test('renders an item card with a title', async () => {
   const itemCard = render(<GoodsItemCard cardItem={cardItem} />);

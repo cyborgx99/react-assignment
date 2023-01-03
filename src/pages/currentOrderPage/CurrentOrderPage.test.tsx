@@ -1,24 +1,58 @@
-import CurrentOrderForm from './currentOrderForm';
 import userEvent from '@testing-library/user-event';
-import { act, cleanup, waitFor } from '@testing-library/react';
-import { render } from 'utils/test-utils';
+import { server } from 'mocks/server';
+import AppRoutes from 'routes/routes';
+import { render, screen, waitFor } from 'utils/test-utils';
+import { formData } from './CurrentOrderForm.test';
 
-const formData = {
-  name: 'John',
-  lastName: 'Dee',
-  email: 'john.dee@someemail.com',
-  phone: '123123',
-  address: 'Legnicka 48k',
-  city: 'Wroclaw',
-};
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+beforeEach(() => window.history.pushState({}, 'Home', '/'));
 
-afterEach(cleanup);
+test('It shows an error message if cart is empty', async () => {
+  window.history.pushState({}, 'Current order', '/current-order');
 
-test('rendering and submitting a basic Formik form', async () => {
-  const handleSubmit = jest.fn();
-  const { getByLabelText, getByRole } = render(
-    <CurrentOrderForm onHandleOrder={handleSubmit} isLoading={false} error={{ message: '' }} />,
-  );
+  render(<AppRoutes />);
+
+  await waitFor(() => screen.getByText('Oops!'));
+});
+
+test('It shows a form is cart has items', async () => {
+  render(<AppRoutes />);
+
+  const addButton = await waitFor(() => screen.getAllByRole('button', { name: 'Add to cart' })[0]);
+
+  await userEvent.click(addButton);
+  await userEvent.click(addButton);
+
+  const cartButton = screen.getAllByTestId('/cart')[0];
+
+  await userEvent.click(cartButton);
+
+  const checkoutButton = await waitFor(() => screen.getByRole('button', { name: 'Checkout' }));
+
+  await userEvent.click(checkoutButton);
+
+  await waitFor(() => screen.getByText('Order details'));
+  await waitFor(() => screen.getByText('Order list:'));
+});
+
+test('It fills out a form and sends the order', async () => {
+  const { getByLabelText, getByRole } = render(<AppRoutes />);
+
+  const addButton = await waitFor(() => screen.getAllByRole('button', { name: 'Add to cart' })[0]);
+
+  await userEvent.click(addButton);
+  await userEvent.click(addButton);
+
+  const cartButton = screen.getAllByTestId('/cart')[0];
+
+  await userEvent.click(cartButton);
+
+  const checkoutButton = await waitFor(() => screen.getByRole('button', { name: 'Checkout' }));
+
+  await userEvent.click(checkoutButton);
+
   const user = userEvent.setup();
 
   await user.type(getByLabelText('name'), formData.name);
@@ -30,21 +64,5 @@ test('rendering and submitting a basic Formik form', async () => {
 
   await user.click(getByRole('button', { name: /Order/i }));
 
-  waitFor(() => expect(handleSubmit).toHaveBeenCalledTimes(1));
-});
-
-test('shows field is required errors', async () => {
-  const handleSubmit = jest.fn();
-  const { getAllByText, getByRole } = render(
-    <CurrentOrderForm onHandleOrder={handleSubmit} isLoading={false} error={{ message: '' }} />,
-  );
-  const user = userEvent.setup();
-
-  await act(async () => {
-    await user.click(getByRole('button', { name: /Order/i }));
-  });
-
-  await waitFor(() => expect(handleSubmit).toHaveBeenCalledTimes(0));
-
-  expect(getAllByText('Field is required')).toHaveLength(6);
+  await waitFor(() => screen.getByText('Success!'));
 });

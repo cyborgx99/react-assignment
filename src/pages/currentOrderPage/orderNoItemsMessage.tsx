@@ -1,11 +1,11 @@
-import React from 'react';
-import StatusMessage from 'components/statusMessage';
 import Button from 'components/button';
-import { OrderMessageWrapper } from './styles';
+import Message from 'components/statusMessage';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { basePathKeys } from 'routes/pathKeys';
+import { OrderMessageWrapper } from './styles';
 
-const OrderSuccessMessage = () => {
+const OrderNoItemsMessage = () => {
   const navigate = useNavigate();
 
   const goHome = () => {
@@ -18,11 +18,11 @@ const OrderSuccessMessage = () => {
 
   return (
     <OrderMessageWrapper>
-      <StatusMessage type='success' message='Your order has been submitted successfully' />
+      <Message type='failure' message='Your cart is empty. Please add more items!' />
       <Button backgroundColor='primary.100' text='Home page' onClick={goHome} />
-      <Button backgroundColor='success.300' text='My orders' onClick={goToMyOrders} />
+      <Button backgroundColor='secondary.100' text='My orders' onClick={goToMyOrders} />
     </OrderMessageWrapper>
   );
 };
 
-export default OrderSuccessMessage;
+export default OrderNoItemsMessage;

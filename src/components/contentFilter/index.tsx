@@ -17,14 +17,14 @@ export const sortOptions: SortOptionValue[] = [
 ];
 
 const ContentFilter = ({
-  setSearch,
+  setFilter,
   setSort,
   search,
   sort,
   additionalStyles,
 }: ContentFilterPropsInterface) => {
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearch(e.target.value);
+    setFilter((previous) => ({ ...previous, page: 1, search: e.target.value }));
   };
   const onSortChange = (value: SortOptionValue) => {
     setSort(value);

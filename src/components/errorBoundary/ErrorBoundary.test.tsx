@@ -1,7 +1,5 @@
-import { cleanup, render } from 'utils/test-utils';
+import { render } from 'utils/test-utils';
 import ErrorBoundary from '.';
-
-beforeEach(cleanup);
 
 const ErrorComponent = () => {
   throw new Error('Help');

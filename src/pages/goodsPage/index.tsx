@@ -9,13 +9,23 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { GoodsContainer, GoodsItemsContainer, HeaderSpan, HeaderTitle } from './styles';
 import { DEFAULT_ITEMS_PER_PAGE } from 'common/constants';
 import { BaseParagraph } from 'common/styles/baseComponents';
+import { useSearchParams } from 'react-router-dom';
 
 const GoodsPage = () => {
+  const [search, setSearch] = useSearchParams();
+
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
-  const [filter, setFilter] = useState<FilterInterface>({ search: '', page: 1 });
+  const [filter, setFilter] = useState<FilterInterface>({
+    search: search.get('search') ?? '',
+    page: parseInt(search.get('page') ?? '1'),
+  });
   const debouncedFilter = useDebounce(filter, 500);
   const { scrollRef } = useScrollRef();
   const { data, error } = useGetItems(debouncedFilter.page, debouncedFilter.search, sort.value);
+
+  useEffect(() => {
+    setSearch({ search: filter.search, page: `${filter.page}` });
+  }, [filter.search, filter.page, setSearch]);
 
   const onPageChange = useCallback((page: number) => {
     setFilter((previous) => ({ ...previous, page }));

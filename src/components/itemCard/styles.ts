@@ -3,13 +3,11 @@ import styled, { css } from 'styled-components';
 export const CardImage = styled.img`
   width: 100%;
   object-fit: cover;
-  border-radius: ${({ theme }) => theme.borderRadius.default};
   height: 20rem;
 `;
 
 export const ItemCardContainer = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primary[100]};
-  border-radius: ${({ theme }) => theme.borderRadius.default};
   margin: 1rem;
   width: calc((100% - 2 * 1rem) / 1);
 

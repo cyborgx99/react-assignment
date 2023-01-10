@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import { server } from 'mocks/server';
 import React from 'react';
-import { waitFor } from '@testing-library/react';
+import { cleanup, waitFor } from '@testing-library/react';
 import { render, screen } from 'utils/test-utils';
 import AppRoutes from './routes';
 
@@ -9,6 +9,7 @@ beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 beforeEach(() => window.history.pushState({}, 'Home', '/'));
+beforeEach(cleanup);
 
 test('It displays home page by default', async () => {
   render(<AppRoutes />);

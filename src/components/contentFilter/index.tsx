@@ -4,6 +4,7 @@ import SelectComponent from 'components/select';
 import { FilterContainer } from './styles';
 import React from 'react';
 import { ContentFilterPropsInterface, SortOptionValue } from './types';
+import { useSearchParams } from 'react-router-dom';
 
 export const sortOptions: SortOptionValue[] = [
   {
@@ -23,8 +24,11 @@ const ContentFilter = ({
   sort,
   additionalStyles,
 }: ContentFilterPropsInterface) => {
+  const [_searchParams, setSearchParams] = useSearchParams();
+
   const onSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilter((previous) => ({ ...previous, page: 1, search: e.target.value }));
+    setSearchParams((previous) => ({ ...previous, page: `1`, search: e.target.value }));
   };
   const onSortChange = (value: SortOptionValue) => {
     setSort(value);

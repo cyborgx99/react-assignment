@@ -13,7 +13,7 @@ import { useSearchParams } from 'react-router-dom';
 
 const GoodsPage = () => {
   const [search, setSearch] = useSearchParams();
-
+  const searchQuery = search.get('search') ?? '';
   const [sort, setSort] = useState<SortOptionValue>(sortOptions[0]);
   const [filter, setFilter] = useState<FilterInterface>({
     search: search.get('search') ?? '',
@@ -26,9 +26,9 @@ const GoodsPage = () => {
   const onPageChange = useCallback(
     (page: number) => {
       setFilter((previous) => ({ ...previous, page }));
-      setSearch((previos) => ({ ...previos, page: `${page}` }));
+      setSearch(() => ({ search: searchQuery, page: `${page}` }));
     },
-    [setSearch],
+    [setSearch, searchQuery],
   );
 
   useEffect(() => {

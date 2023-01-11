@@ -23,13 +23,13 @@ const GoodsPage = () => {
   const { scrollRef } = useScrollRef();
   const { data, error } = useGetItems(debouncedFilter.page, debouncedFilter.search, sort.value);
 
-  useEffect(() => {
-    setSearch({ search: filter.search, page: `${filter.page}` });
-  }, [filter.search, filter.page, setSearch]);
-
-  const onPageChange = useCallback((page: number) => {
-    setFilter((previous) => ({ ...previous, page }));
-  }, []);
+  const onPageChange = useCallback(
+    (page: number) => {
+      setFilter((previous) => ({ ...previous, page }));
+      setSearch((previos) => ({ ...previos, page: `${page}` }));
+    },
+    [setSearch],
+  );
 
   useEffect(() => {
     if (!scrollRef?.current) return;
